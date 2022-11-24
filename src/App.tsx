@@ -22,7 +22,7 @@ const theme = createTheme({
 const App: React.FC = () => {
   return (
     <MuiThemeProvider theme={theme}>
-      <NavBar>main</NavBar>
+      <NavBar />
     </MuiThemeProvider>
   )
 }
