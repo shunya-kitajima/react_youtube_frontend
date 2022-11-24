@@ -4,6 +4,7 @@ import {
   ThemeProvider as MuiThemeProvider,
 } from '@material-ui/core'
 import { indigo } from '@material-ui/core/colors'
+import NavBar from './components/NavBar'
 import './App.css'
 
 const theme = createTheme({
@@ -21,7 +22,7 @@ const theme = createTheme({
 const App: React.FC = () => {
   return (
     <MuiThemeProvider theme={theme}>
-      <div>main</div>
+      <NavBar>main</NavBar>
     </MuiThemeProvider>
   )
 }
