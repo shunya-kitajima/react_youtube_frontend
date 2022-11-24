@@ -14,7 +14,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Comic Neue',
+    fontFamily: '"Comic Neue", crusive',
   },
 })
 
