@@ -1,12 +1,28 @@
 import React from 'react'
-import logo from './logo.svg'
+import {
+  createTheme,
+  ThemeProvider as MuiThemeProvider,
+} from '@material-ui/core'
+import { indigo } from '@material-ui/core/colors'
 import './App.css'
+
+const theme = createTheme({
+  palette: {
+    primary: indigo,
+    secondary: {
+      main: '#f44336',
+    },
+  },
+  typography: {
+    fontFamily: 'Comic Neue',
+  },
+})
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
