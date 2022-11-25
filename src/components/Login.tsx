@@ -53,6 +53,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Login: React.FC = (props: any) => {
+  const classes = useStyles()
+
   return <div></div>
 }
 
