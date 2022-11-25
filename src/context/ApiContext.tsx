@@ -1,9 +1,12 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { withCookies } from 'react-cookie'
 import axios from 'axios'
+import { Video } from '../types'
 
-const ApiContext: React.FC = () => {
-  return <div></div>
+export const ApiContext = createContext()
+
+const ApiContextProvider: React.FC = (props: any) => {
+  return <ApiContext.Provider value={{}}>{props.children}</ApiContext.Provider>
 }
 
-export default ApiContext
+export default withCookies(ApiContextProvider)
