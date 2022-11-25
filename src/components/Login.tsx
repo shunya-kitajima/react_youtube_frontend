@@ -9,6 +9,14 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import { CircularProgress } from '@material-ui/core'
+import {
+  START_FETCH,
+  FETCH_SUCCESS,
+  ERROR_CATCHED,
+  INPUT_EDIT_REG,
+  INPUT_EDIT_LOG,
+  TOGGLE_MODE,
+} from './actionTypes'
 
 const Login: React.FC = (props: any) => {
   return <div></div>
