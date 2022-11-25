@@ -17,6 +17,7 @@ import {
   INPUT_EDIT_LOG,
   TOGGLE_MODE,
 } from './actionTypes'
+import { InitialState } from '../types'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -51,6 +52,16 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 10,
   },
 }))
+
+const initialState: InitialState = {
+  isLoading: false,
+  isLoginView: true,
+  error: '',
+  credentialsLog: {
+    email: '',
+    password: '',
+  },
+}
 
 const Login: React.FC = (props: any) => {
   const classes = useStyles()
