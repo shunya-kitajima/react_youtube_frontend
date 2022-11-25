@@ -5,13 +5,17 @@ import { CookiesProvider } from 'react-cookie'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import Login from './components/Login'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
     <CookiesProvider>
-      <App />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/youtube" element={<App />} />
+      </Routes>
     </CookiesProvider>
   </BrowserRouter>
   // </React.StrictMode>
