@@ -120,7 +120,91 @@ const Login: React.FC = (props: any) => {
     })
   }
 
-  const login = () => {}
+  const login = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (state.isLoginView) {
+      try {
+        dispatch({
+          type: START_FETCH,
+          inputName: 'state.isLoginView',
+          payload: {},
+        })
+        const res = await axios.post(
+          'http://127.0.0.1:8000/authen/jwt/create/',
+          state.credentialsLog,
+          {
+            headers: { 'Content-Type': 'application/json' },
+          }
+        )
+        if (res.data.access === '') {
+          dispatch({
+            type: FETCH_SUCCESS,
+            inputName: 'state.isLoading',
+            payload: {},
+          })
+          window.location.href = '/'
+        } else {
+          dispatch({
+            type: FETCH_SUCCESS,
+            inputName: 'state.isLoading',
+            payload: {},
+          })
+          props.cookies.set('jwt-token', res.data.access)
+          window.location.href = '/youtube'
+        }
+      } catch (err: any) {
+        dispatch({
+          type: ERROR_CATCHED,
+          inputName: 'state.isLoading',
+          payload: {},
+        })
+      }
+    } else {
+      try {
+        dispatch({
+          type: START_FETCH,
+          inputName: 'state.isLoginView',
+          payload: {},
+        })
+        await axios.post(
+          'http://127.0.0.1:8000/api/create/',
+          state.credentialsLog,
+          {
+            headers: { 'Content-Type': 'application/json' },
+          }
+        )
+        const res = await axios.post(
+          'http://127.0.0.1:8000/authen/jwt/create/',
+          state.credentialsLog,
+          {
+            headers: { 'Content-Type': 'application/json' },
+          }
+        )
+        if (res.data.access === '') {
+          dispatch({
+            type: FETCH_SUCCESS,
+            inputName: 'state.isLoading',
+            payload: {},
+          })
+          window.location.href = '/'
+        } else {
+          dispatch({
+            type: FETCH_SUCCESS,
+            inputName: 'state.isLoading',
+            payload: {},
+          })
+          props.cookies.set('jwt-token', res.data.access)
+          window.location.href = '/youtube'
+        }
+      } catch (err: any) {
+        dispatch({
+          type: ERROR_CATCHED,
+          inputName: 'state.isLoading',
+          payload: {},
+        })
+      }
+    }
+  }
 
   const toggleView = (): void => {
     dispatch({
