@@ -120,7 +120,7 @@ const Login: React.FC = (props: any) => {
     })
   }
 
-  const login = async (e: FormEvent<HTMLFormElement>) => {
+  const login = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
     if (state.isLoginView) {
       try {
