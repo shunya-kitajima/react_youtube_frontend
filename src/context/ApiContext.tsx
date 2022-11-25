@@ -41,6 +41,33 @@ const ApiContextProvider: React.FC = (props: any) => {
     void getVideos()
   }, [token])
 
+  const createVideo = async (): Promise<void> => {
+    const postData = {
+      title,
+      video: video.name,
+      thum: thum.name,
+    }
+    try {
+      const res = await axios.post(
+        'http://127.0.0.1:8000/api/videos/',
+        postData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `JWT ${token}`,
+          },
+        }
+      )
+      setVideos([...videos, res.data])
+      setTitle('')
+      setVideo(new File(['dummy'], 'dummy.txt', { type: 'text/plain' }))
+      setThum(new File(['dummy'], 'dummy.txt', { type: 'text/plain' }))
+      setModalIsOpen(false)
+    } catch (err: any) {
+      throw new Error(err.message)
+    }
+  }
+
   return <ApiContext.Provider value={{}}>{props.children}</ApiContext.Provider>
 }
 
