@@ -13,3 +13,12 @@ export interface Action {
   inputName: string
   payload: {}
 }
+
+export interface Video {
+  id: string
+  title: string
+  video: File
+  thum: File
+  like: number
+  dislike: number
+}
