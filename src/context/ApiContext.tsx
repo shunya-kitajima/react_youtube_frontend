@@ -69,6 +69,31 @@ const ApiContextProvider: React.FC = (props: any) => {
     }
   }
 
+  const deleteVideo = async (): Promise<void> => {
+    try {
+      await axios.delete(
+        `http://127.0.0.1:8000/api/videos/${selectedVideo.id}/`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `JWT ${token}`,
+          },
+        }
+      )
+      setSelectedVideo({
+        id: '',
+        title: '',
+        video: new File(['dummy'], 'dummy.txt', { type: 'text/plain' }),
+        thum: new File(['dummy'], 'dummy.txt', { type: 'text/plain' }),
+        like: 0,
+        dislike: 0,
+      })
+      setVideos(videos.filter((video) => video.id !== selectedVideo.id))
+    } catch (err: any) {
+      throw new Error(err.message)
+    }
+  }
+
   return <ApiContext.Provider value={{}}>{props.children}</ApiContext.Provider>
 }
 
