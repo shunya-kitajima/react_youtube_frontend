@@ -1,4 +1,5 @@
 import React from 'react'
+import { withCookies } from 'react-cookie'
 import { makeStyles } from '@material-ui/core'
 import Appbar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -12,10 +13,13 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const NavBar: React.FC = () => {
+const NavBar: React.FC = (props: any) => {
   const classes = useStyles()
 
-  const logout = (): void => {}
+  const logout = (): void => {
+    props.cookies.remove('')
+    window.location.href = '/'
+  }
 
   return (
     <Appbar position="static">
@@ -34,4 +38,4 @@ const NavBar: React.FC = () => {
   )
 }
 
-export default NavBar
+export default withCookies(NavBar)
