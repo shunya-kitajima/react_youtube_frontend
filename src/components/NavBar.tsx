@@ -17,7 +17,7 @@ const NavBar: React.FC = (props: any) => {
   const classes = useStyles()
 
   const logout = (): void => {
-    props.cookies.remove('')
+    props.cookies.remove('jwt-token')
     window.location.href = '/'
   }
 
