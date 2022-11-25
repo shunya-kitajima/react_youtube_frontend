@@ -42,6 +42,7 @@ const ApiContextProvider: React.FC = (props: any) => {
   }, [token])
 
   const createVideo = async (): Promise<void> => {
+    setModalIsOpen(true)
     const postData = {
       title,
       video: video.name,
