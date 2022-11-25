@@ -109,7 +109,113 @@ const Login: React.FC = (props: any) => {
   const classes = useStyles()
   const [state, dispatch] = useReducer(loginReducer, initialState)
 
-  return <div></div>
+  const inputChangedLog = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
+    e.preventDefault()
+    dispatch({
+      type: INPUT_EDIT,
+      inputName: e.target.name,
+      payload: e.target.value,
+    })
+  }
+
+  const login = () => {}
+
+  const toggleView = (): void => {
+    dispatch({
+      type: TOGGLE_MODE,
+      inputName: 'state.isLoginView',
+      payload: {},
+    })
+  }
+
+  return (
+    <Container maxWidth="xs">
+      <form onSubmit={login}>
+        <div className={classes.paper}>
+          {state.isLoading && <CircularProgress />}
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography variant="h5">
+            {state.isLoginView ? 'Login' : 'Register'}
+          </Typography>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            label="Email"
+            name="email"
+            value={state.credentialsLog.email}
+            onChange={(e) => inputChangedLog(e)}
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            label="Password"
+            name="password"
+            type="password"
+            value={state.credentialsLog.password}
+            onChange={(e) => inputChangedLog(e)}
+          />
+          <span className={classes.spanError}>{state.error}</span>
+          {state.isLoginView ? (
+            state.credentialsLog.email === '' ||
+            state.credentialsLog.password === '' ? (
+              <Button
+                className={classes.submit}
+                type="submit"
+                fullWidth
+                disabled
+                variant="contained"
+                color="primary"
+              >
+                Login
+              </Button>
+            ) : (
+              <Button
+                className={classes.submit}
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+              >
+                Login
+              </Button>
+            )
+          ) : state.credentialsLog.email === '' ||
+            state.credentialsLog.password === '' ? (
+            <Button
+              className={classes.submit}
+              type="submit"
+              fullWidth
+              disabled
+              variant="contained"
+              color="primary"
+            >
+              Register
+            </Button>
+          ) : (
+            <Button
+              className={classes.submit}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+            >
+              Register
+            </Button>
+          )}
+          <span onClick={() => toggleView()} className={classes.span}>
+            {state.isLoginView ? 'Create Account ?' : 'Back to Login ?'}
+          </span>
+        </div>
+      </form>
+    </Container>
+  )
 }
 
 export default withCookies(Login)
