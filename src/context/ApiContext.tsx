@@ -63,29 +63,34 @@ const ApiContextProvider: React.FC = (props: any) => {
 
   const createVideo = async (): Promise<void> => {
     setModalIsOpen(true)
-    const postData = {
-      title,
-      video: video.name,
-      thum: thum.name,
-    }
-    try {
-      const res = await axios.post(
-        'http://127.0.0.1:8000/api/videos/',
-        postData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `JWT ${token}`,
-          },
-        }
-      )
-      setVideos([...videos, res.data])
-      setTitle('')
-      setVideo(new File(['dummy'], 'dummy.txt', { type: 'text/plain' }))
-      setThum(new File(['dummy'], 'dummy.txt', { type: 'text/plain' }))
+    if (video.name !== 'dummy.txt' || thum.name !== 'dummy.txt') {
+      const postData = {
+        title,
+        video: video.name,
+        thum: thum.name,
+      }
+      try {
+        const res = await axios.post(
+          'http://127.0.0.1:8000/api/videos/',
+          postData,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `JWT ${token}`,
+            },
+          }
+        )
+        setVideos([...videos, res.data])
+        setTitle('')
+        setVideo(new File(['dummy'], 'dummy.txt', { type: 'text/plain' }))
+        setThum(new File(['dummy'], 'dummy.txt', { type: 'text/plain' }))
+        setModalIsOpen(false)
+      } catch (err: any) {
+        setModalIsOpen(false)
+        throw new Error(err.message)
+      }
+    } else {
       setModalIsOpen(false)
-    } catch (err: any) {
-      throw new Error(err.message)
     }
   }
 
