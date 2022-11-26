@@ -64,11 +64,10 @@ const ApiContextProvider: React.FC = (props: any) => {
   const createVideo = async (): Promise<void> => {
     setModalIsOpen(true)
     if (video.name !== 'dummy.txt' || thum.name !== 'dummy.txt') {
-      const postData = {
-        title,
-        video,
-        thum,
-      }
+      const postData = new FormData()
+      postData.append('title', title)
+      postData.append('video', video, video.name)
+      postData.append('thum', thum, thum.name)
       try {
         const res = await axios.post(
           'http://127.0.0.1:8000/api/videos/',
