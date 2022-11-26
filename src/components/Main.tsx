@@ -72,6 +72,11 @@ const Main: React.FC = () => {
           </Grid>
         </Grid>
       </Grid>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        style={customStyles}
+      />
     </>
   )
 }
