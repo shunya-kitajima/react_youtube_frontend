@@ -11,7 +11,7 @@ import AddIcon from '@material-ui/icons/Add'
 import { IoMdClose } from 'react-icons/io'
 import { RiUploadCloud2Line } from 'react-icons/ri'
 import { FaVideo } from 'react-icons/fa'
-import { BsImage } from 'react-icons/bs'
+import { BsImages } from 'react-icons/bs'
 import { ApiContext } from '../context/ApiContext'
 import VideoList from './VideoList'
 import VideoDetail from './VideoDetail'
@@ -124,8 +124,9 @@ const Main: React.FC = () => {
             }}
           />
           <IconButton onClick={handleSelectThum}>
-            <BsImage className="photo" />
+            <BsImages className="photo" />
           </IconButton>
+          <br />
         </Container>
       </Modal>
     </>
