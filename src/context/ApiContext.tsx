@@ -94,6 +94,32 @@ const ApiContextProvider: React.FC = (props: any) => {
     }
   }
 
+  const incrementLik = async () => {
+    try {
+      const patchData = {
+        like: selectedVideo.like + 1,
+      }
+      const res = await axios.patch(
+        `http://127.0.0.1:8000/api/videos/${selectedVideo.id}/`,
+        patchData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `JWT ${token}`,
+          },
+        }
+      )
+      setSelectedVideo({ ...selectedVideo, like: res.data.like })
+      setVideos(
+        videos.map((video) =>
+          video.id === selectedVideo.id ? res.data : video
+        )
+      )
+    } catch (err: any) {
+      throw new Error(err.message)
+    }
+  }
+
   return <ApiContext.Provider value={{}}>{props.children}</ApiContext.Provider>
 }
 
