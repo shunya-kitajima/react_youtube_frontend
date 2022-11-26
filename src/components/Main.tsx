@@ -127,6 +127,19 @@ const Main: React.FC = () => {
             <BsImages className="photo" />
           </IconButton>
           <br />
+          {title !== '' &&
+            video.name !== 'dummy.txt' &&
+            thum.name !== 'dummy.txt' && (
+              <button
+                className="btn-modal"
+                onClick={async () => await createVideo()}
+              >
+                <RiUploadCloud2Line />
+              </button>
+            )}
+          <button className="btn-modal" onClick={() => setModalIsOpen(false)}>
+            <IoMdClose />
+          </button>
         </Container>
       </Modal>
     </>
