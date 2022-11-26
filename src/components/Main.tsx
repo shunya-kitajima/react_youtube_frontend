@@ -48,7 +48,32 @@ const Main: React.FC = () => {
     },
   }
 
-  return <div></div>
+  return (
+    <>
+      <Grid container className={classes.grid}>
+        <Grid item xs={11}>
+          <Grid container spacing={5}>
+            <Grid item xs={12}></Grid>
+            <Grid item xs={1}>
+              <Fab
+                color="primary"
+                aria-label="add"
+                onClick={() => setModalIsOpen(true)}
+              >
+                <AddIcon />
+              </Fab>
+            </Grid>
+            <Grid item xs={8}>
+              <VideoDetail />
+            </Grid>
+            <Grid item xs={3}>
+              <VideoList />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </>
+  )
 }
 
 export default Main
