@@ -66,8 +66,8 @@ const ApiContextProvider: React.FC = (props: any) => {
     if (video.name !== 'dummy.txt' || thum.name !== 'dummy.txt') {
       const postData = {
         title,
-        video: video.name,
-        thum: thum.name,
+        video,
+        thum,
       }
       try {
         const res = await axios.post(
