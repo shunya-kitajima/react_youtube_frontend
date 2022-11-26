@@ -74,7 +74,7 @@ const ApiContextProvider: React.FC = (props: any) => {
           postData,
           {
             headers: {
-              'Content-Type': 'application/json',
+              'Content-Type': 'multipart/form-data',
               Authorization: `JWT ${token}`,
             },
           }
