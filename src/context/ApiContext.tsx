@@ -146,7 +146,30 @@ const ApiContextProvider: React.FC = (props: any) => {
     }
   }
 
-  return <ApiContext.Provider value={{}}>{props.children}</ApiContext.Provider>
+  return (
+    <ApiContext.Provider
+      value={{
+        videos,
+        setVideos,
+        title,
+        setTitle,
+        video,
+        setVideo,
+        thum,
+        setThum,
+        selectedVideo,
+        setSelectedVideo,
+        modalIsOpen,
+        setModalIsOpen,
+        createVideo,
+        deleteVideo,
+        incrementLike,
+        incrementDisLike,
+      }}
+    >
+      {props.children}
+    </ApiContext.Provider>
+  )
 }
 
 export default withCookies(ApiContextProvider)
