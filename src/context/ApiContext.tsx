@@ -87,6 +87,9 @@ const ApiContextProvider: React.FC = (props: any) => {
         setModalIsOpen(false)
       } catch (err: any) {
         setModalIsOpen(false)
+        setTitle('')
+        setVideo(new File(['dummy'], 'dummy.txt', { type: 'text/plain' }))
+        setThum(new File(['dummy'], 'dummy.txt', { type: 'text/plain' }))
         throw new Error(err.message)
       }
     } else {
