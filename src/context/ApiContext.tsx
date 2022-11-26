@@ -3,7 +3,27 @@ import { withCookies } from 'react-cookie'
 import axios from 'axios'
 import { Video } from '../types'
 
-export const ApiContext = createContext()
+export const ApiContext = createContext(
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+  {} as {
+    videos: Video[]
+    setVideos: React.Dispatch<React.SetStateAction<Video[]>>
+    title: string
+    setTitle: React.Dispatch<React.SetStateAction<string>>
+    video: File
+    setVideo: React.Dispatch<React.SetStateAction<File>>
+    thum: File
+    setThum: React.Dispatch<React.SetStateAction<File>>
+    selectedVideo: Video
+    setSelectedVideo: React.Dispatch<React.SetStateAction<Video>>
+    modalIsOpen: boolean
+    setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+    createVideo: () => Promise<void>
+    deleteVideo: () => Promise<void>
+    incrementLike: () => Promise<void>
+    incrementDisLike: () => Promise<void>
+  }
+)
 
 const ApiContextProvider: React.FC = (props: any) => {
   const token = props.cookies.get('jwt-token') as string
