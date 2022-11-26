@@ -94,7 +94,7 @@ const ApiContextProvider: React.FC = (props: any) => {
     }
   }
 
-  const incrementLik = async () => {
+  const incrementLike = async (): Promise<void> => {
     try {
       const patchData = {
         like: selectedVideo.like + 1,
@@ -110,6 +110,32 @@ const ApiContextProvider: React.FC = (props: any) => {
         }
       )
       setSelectedVideo({ ...selectedVideo, like: res.data.like })
+      setVideos(
+        videos.map((video) =>
+          video.id === selectedVideo.id ? res.data : video
+        )
+      )
+    } catch (err: any) {
+      throw new Error(err.message)
+    }
+  }
+
+  const incrementDisLike = async (): Promise<void> => {
+    try {
+      const patchData = {
+        dislike: selectedVideo.like - 1,
+      }
+      const res = await axios.patch(
+        `http://127.0.0.1:8000/api/videos/${selectedVideo.id}/`,
+        patchData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `JWT ${token}`,
+          },
+        }
+      )
+      setSelectedVideo({ ...selectedVideo, dislike: res.data.dislike })
       setVideos(
         videos.map((video) =>
           video.id === selectedVideo.id ? res.data : video
