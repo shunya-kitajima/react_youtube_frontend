@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton'
 import AddIcon from '@material-ui/icons/Add'
 import { IoMdClose } from 'react-icons/io'
 import { RiUploadCloud2Line } from 'react-icons/ri'
-import { FaViadeo } from 'react-icons/fa'
+import { FaVideo } from 'react-icons/fa'
 import { BsImage } from 'react-icons/bs'
 import { ApiContext } from '../context/ApiContext'
 import VideoList from './VideoList'
@@ -48,6 +48,16 @@ const Main: React.FC = () => {
     },
   }
 
+  const handleSelectMovie = (): void => {
+    const fileInput = document.getElementById('mp4Input')
+    fileInput?.click()
+  }
+
+  const handleSelectThum = (): void => {
+    const fileInput = document.getElementById('thumInput')
+    fileInput.click()
+  }
+
   return (
     <>
       <Grid container className={classes.grid}>
@@ -76,7 +86,48 @@ const Main: React.FC = () => {
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         style={customStyles}
-      />
+      >
+        <Typography>Movie title</Typography>
+        <TextField type="text" onChange={(e) => setTitle(e.target.value)} />
+        <br />
+        <br />
+        <Container className={classes.container}>
+          <input
+            type="file"
+            id="mp4Input"
+            hidden
+            onChange={(e) => {
+              if (e.target.files != null) {
+                setVideo(e.target.files[0])
+              } else {
+                setVideo(
+                  new File(['dummy'], 'dummy.txt', { type: 'text/plain' })
+                )
+              }
+            }}
+          />
+          <IconButton onClick={handleSelectMovie}>
+            <FaVideo className="photo" />
+          </IconButton>
+          <input
+            type="file"
+            id="thumInput"
+            hidden
+            onChange={(e) => {
+              if (e.target.files !== null) {
+                setThum(e.target.files[0])
+              } else {
+                setThum(
+                  new File(['dummy'], 'dummy.txt', { type: 'text/plain' })
+                )
+              }
+            }}
+          />
+          <IconButton onClick={handleSelectThum}>
+            <BsImage className="photo" />
+          </IconButton>
+        </Container>
+      </Modal>
     </>
   )
 }
