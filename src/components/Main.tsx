@@ -55,7 +55,7 @@ const Main: React.FC = () => {
 
   const handleSelectThum = (): void => {
     const fileInput = document.getElementById('thumInput')
-    fileInput.click()
+    fileInput?.click()
   }
 
   return (
