@@ -17,8 +17,8 @@ export interface Action {
 export interface Video {
   id: string
   title: string
-  video: File
-  thum: File
+  video: string
+  thum: string
   like: number
   dislike: number
 }

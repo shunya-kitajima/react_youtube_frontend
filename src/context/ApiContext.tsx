@@ -38,8 +38,8 @@ const ApiContextProvider: React.FC = (props: any) => {
   const [selectedVideo, setSelectedVideo] = useState<Video>({
     id: '',
     title: '',
-    video: new File(['dummy'], 'dummy.txt', { type: 'text/plain' }),
-    thum: new File(['dummy'], 'dummy.txt', { type: 'text/plain' }),
+    video: '',
+    thum: '',
     like: 0,
     dislike: 0,
   })
@@ -110,8 +110,8 @@ const ApiContextProvider: React.FC = (props: any) => {
       setSelectedVideo({
         id: '',
         title: '',
-        video: new File(['dummy'], 'dummy.txt', { type: 'text/plain' }),
-        thum: new File(['dummy'], 'dummy.txt', { type: 'text/plain' }),
+        video: '',
+        thum: '',
         like: 0,
         dislike: 0,
       })
