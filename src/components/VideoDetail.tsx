@@ -63,6 +63,28 @@ const VideoDetail: React.FC = () => {
           }}
         />
       </div>
+      <Grid container alignItems="center">
+        <Grid item xs={10}>
+          <Typography className={classes.title} variant="h6">
+            {selectedVideo.title}
+          </Typography>
+        </Grid>
+        <Grid item xs={1}>
+          <button className="like" onClick={async () => await incrementLike()}>
+            <AiFillLike />
+            <Typography>{selectedVideo.like}</Typography>
+          </button>
+        </Grid>
+        <Grid item xs={1}>
+          <button
+            className="like"
+            onClick={async () => await incrementDisLike()}
+          >
+            <AiFillDislike />
+            <Typography>{selectedVideo.dislike}</Typography>
+          </button>
+        </Grid>
+      </Grid>
     </>
   )
 }
