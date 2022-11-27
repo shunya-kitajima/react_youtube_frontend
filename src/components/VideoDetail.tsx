@@ -85,6 +85,12 @@ const VideoDetail: React.FC = () => {
           </button>
         </Grid>
       </Grid>
+      <Fab
+        className={classes.delete}
+        color="primary"
+        aria-label="delete"
+        onClick={async () => await deleteVideo()}
+      ></Fab>
     </>
   )
 }
