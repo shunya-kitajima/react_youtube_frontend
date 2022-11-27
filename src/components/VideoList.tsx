@@ -9,7 +9,11 @@ const VideoList: React.FC = () => {
     <VideoItem key={video.id} video={video} />
   ))
 
-  return <Grid></Grid>
+  return (
+    <Grid container spacing={5}>
+      <div className="video-list">{videoList}</div>
+    </Grid>
+  )
 }
 
 export default VideoList
