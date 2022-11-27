@@ -90,7 +90,9 @@ const VideoDetail: React.FC = () => {
         color="primary"
         aria-label="delete"
         onClick={async () => await deleteVideo()}
-      ></Fab>
+      >
+        <DeleteIcon />
+      </Fab>
     </>
   )
 }
