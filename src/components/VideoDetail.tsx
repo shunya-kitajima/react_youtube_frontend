@@ -32,7 +32,39 @@ const VideoDetail: React.FC = () => {
   const { selectedVideo, deleteVideo, incrementLike, incrementDisLike } =
     useContext(ApiContext)
 
-  return <div></div>
+  if (selectedVideo.id === '') {
+    return (
+      <div className="container">
+        <button className="wait">
+          <IoLogoYoutube />
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      <div className="wrapper">
+        <ReactPlayer
+          className="player"
+          url={selectedVideo.video}
+          width="100%"
+          height="100%"
+          playing
+          controls
+          disablePictureInPicture
+          config={{
+            file: {
+              attributes: {
+                controlsList: 'nodownload',
+                disablePictureInPicture: true,
+              },
+            },
+          }}
+        />
+      </div>
+    </>
+  )
 }
 
 export default VideoDetail
