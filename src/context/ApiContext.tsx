@@ -150,7 +150,7 @@ const ApiContextProvider: React.FC = (props: any) => {
   const incrementDisLike = async (): Promise<void> => {
     try {
       const patchData = {
-        dislike: selectedVideo.like - 1,
+        dislike: selectedVideo.dislike + 1,
       }
       const res = await axios.patch(
         `http://127.0.0.1:8000/api/videos/${selectedVideo.id}/`,
