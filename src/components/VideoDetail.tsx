@@ -11,12 +11,26 @@ import { IoLogoYoutube } from 'react-icons/io'
 import { ApiContext } from '../context/ApiContext'
 import { Video } from '../types'
 
+const useStyles = makeStyles((theme) => ({
+  title: {
+    paddingLeft: theme.spacing(2),
+  },
+  delete: {
+    margin: theme.spacing(2),
+  },
+  like: {
+    paddingTop: theme.spacing(3),
+  },
+}))
+
 export interface Props {
   video: Video
 }
 
 const VideoDetail: React.FC = () => {
-  const {} = useContext(ApiContext)
+  const classes = useStyles()
+  const { selectedVideo, deleteVideo, incrementLike, incrementDisLike } =
+    useContext(ApiContext)
 
   return <div></div>
 }
