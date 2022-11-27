@@ -34,7 +34,7 @@ const VideoItem: React.FC<Props> = ({ video }) => {
           component="img"
           alt="thumnail"
           height="200"
-          image={video.thum.name}
+          image={video.thum}
         />
         <CardContent className={classes.cardcont}>
           <Typography variant="h6">{video.title}</Typography>
